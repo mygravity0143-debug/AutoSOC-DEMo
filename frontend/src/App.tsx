@@ -78,4 +78,40 @@ function MainApp() {
 
             {currentTab === 'vehicle-details' && selectedVehicleId && (
               <VehicleDetailsPage
-                vehicleId={select
+                vehicleId={selectedVehicleId}
+                onBack={() => setCurrentTab('vehicles')}
+              />
+            )}
+
+            {currentTab === 'ecus' && <EcusPage />}
+            {currentTab === 'can-monitor' && <CanMonitorPage />}
+            {currentTab === 'threat-detection' && <ThreatDetectionPage />}
+            {currentTab === 'alerts' && <AlertsPage />}
+            {currentTab === 'security-logs' && <SecurityLogsPage />}
+            {currentTab === 'vulnerabilities' && <VulnerabilitiesPage />}
+            {currentTab === 'incidents' && <IncidentsPage />}
+            {currentTab === 'analytics' && <AnalyticsPage />}
+            {currentTab === 'architecture' && <ArchitecturePage />}
+            {currentTab === 'system-health' && <SystemHealthPage />}
+            {currentTab === 'settings' && <SettingsPage />}
+          </Suspense>
+        </main>
+      </div>
+
+      <AttackSimulatorModal
+        isOpen={isSimulatorOpen}
+        onClose={() => setIsSimulatorOpen(false)}
+      />
+    </div>
+  );
+}
+
+export function App() {
+  return (
+    <SocProvider>
+      <MainApp />
+    </SocProvider>
+  );
+}
+
+export default App;
