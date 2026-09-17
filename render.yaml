@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: autosoc
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: |
+      cd frontend && npm install && npm run build && cd ../backend && npm install && npm run build
+    startCommand: |
+      cd backend && npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
